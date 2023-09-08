@@ -1,0 +1,23 @@
+.user {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+
+img {
+  margin-bottom: 4px;
+  width: 25px;
+}
+
+.user > div {
+  margin-left: 15px;
+}
+
+.user > .name {
+  color: orange;
+}
+
+.user > .exit{
+    cursor: pointer;
+    margin-left: 15px;
+}

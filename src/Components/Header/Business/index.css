@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  font-size: 26px;
+  margin-top: 10px;
+}
+
+.logo {
+  font-weight: bold;
+  color: blueviolet;
+  margin: 0;
+}
+
+.Carteira {
+  font-weight: bold;
+  color: black;
+  margin-left: 5px;
+}
