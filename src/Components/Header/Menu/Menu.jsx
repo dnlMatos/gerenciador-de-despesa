@@ -1,48 +1,79 @@
 import React, { useState } from "react";
 import Add from "../../../images/pre-pago.png";
 import "./index.css";
+import { useEffect } from "react";
 
 export default function Menu() {
-  const [month, setMonth] = useState("");
-  const localMonths = [
-    "Janeiro",
-    "Fevereiro",
-    "Marco",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Septembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro",
-  ];
+  const [installment, setInstallment] = useState(5);
+  const [payment, setPayment] = useState(200);
+  const [month, setMonth] = useState();
+  
   const date = new Date();
-  console.log(date);
+  const monthString = (date.getMonth() + 1).toString();
+  const dayString = date.getDate().toString();
+  const yearString = date.getFullYear().toString();
+  
+  const newFormatDay = parseInt(dayString);
+  const newFormatMonth = parseInt(monthString);
+  const newFormatYear = parseInt(yearString);
+  
+  useEffect(()=>{
+    checkMonth(newFormatMonth)
+  },[])
 
-  // console.log(localMonth);
-  // for (let i = 0; i < localMonths.length; i++) {
-  //   // if ((date.getUTCMonth + 1) == i) {
-  //   //   console.log(localMonths[i]);
-  //   // }
-  //   console.log(localMonths[i]);
-  // }
+  const checkMonth = (month) => {
+    switch (month) {
+      case 1:
+        setMonth("Janeiro");
+        break;
+      case 2:
+        setMonth("Fevereiro");
+        break;
+      case 3:
+        setMonth("Março");
+        break;
+      case 4:
+        setMonth("Abril");
+        break;
+      case 5:
+        setMonth("Maio");
+        break;
+      case 6:
+        setMonth("Junho");
+        break;
+      case 7:
+        setMonth("Julho");
+        break;
+      case 8:
+        setMonth("Agosto");
+        break;
+      case 9:
+        setMonth("Setembro");
+        break;
+      case 10:
+        setMonth("Outubro");
+        break;
+      case 11:
+        setMonth("Novembro");
+        break;
+      case 12:
+        setMonth("Dezembro");
+        break;
+      default:
+    }
+  };
 
   return (
     <span className="addButton">
       <button>
         Lançar Despesa <img src={Add} />
       </button>
-      <select name="select">
-        {date.getDate() > 5 ? (
-          <option value={date.getMonth() + 2}>{date.getMonth() + 2}</option>
+      <select value="">
+        {newFormatDay <= 5 ? (
+          <option value={month}>{month}</option>
         ) : (
-          <option value={date.getMonth() + 1}>{date.getMonth() + 1}</option>
+          <option value={newFormatMonth + 1}>{newFormatMonth + 1}</option>
         )}
-
-        {/* 1 - Usar o metodo date para pegar o mes atual do sistema e jogar o valor na 1ª opçao 
-            2 - Fazer map do objeto Date ate a última despesa lançada*/}
       </select>
     </span>
   );
