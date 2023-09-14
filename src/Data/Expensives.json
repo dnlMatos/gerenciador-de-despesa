@@ -1,0 +1,52 @@
+[
+  {
+    "name": "celular",
+    "installment": 12,
+    "payment": 300.00
+  },
+  {
+    "name": "jantar",
+    "installment": 2,
+    "payment": 200.00
+  },
+  {
+    "name": "roupas",
+    "installment": 5,
+    "payment": 300.00
+  },
+  {
+    "name": "combustivel",
+    "installment": 1,
+    "payment": 80.00
+  },
+  {
+    "name": "pizza",
+    "installment": 2,
+    "payment": 70.00
+  },
+  {
+    "name": "remedio",
+    "installment": 3,
+    "payment": 80.00
+  },
+  {
+    "name": "feira",
+    "installment": 1,
+    "payment": 1100.00
+  },
+  {
+    "name": "monitor",
+    "installment": 8,
+    "payment": 300.00
+  },
+  {
+    "name": "tenis",
+    "installment": 4,
+    "payment": 80.00
+  },
+  {
+    "name": "curso",
+    "installment": 7,
+    "payment": 50.00
+  }
+]
