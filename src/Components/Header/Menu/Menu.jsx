@@ -3,6 +3,7 @@ import Add from "../../../images/pre-pago.png";
 import Expensives from "../../../Data/Expensives.json";
 import "./index.css";
 import { useEffect } from "react";
+import { useForm } from "../../../Hooks/useForm";
 
 export default function Menu() {
   let dataView = "";
@@ -10,10 +11,12 @@ export default function Menu() {
   let monthSingle = "";
   let yeaSingle = "";
   let repeat = 0;
+
   const expensives = Expensives;
   const [installment, setInstallment] = useState(5);
   const [payment, setPayment] = useState(200);
   const [month, setMonth] = useState();
+  const [selectFilter, setSelectFilter] = useState();
   const [stringMonthName, setStringMonthName] = useState("");
   const allMonths = [
     "Janeiro",
@@ -29,6 +32,9 @@ export default function Menu() {
     "Novembro",
     "Dezembro",
   ];
+  const { form, onChangeInput, clearInput } = useForm({
+    search: "",
+  });
 
   //data em string
   const date = new Date();
@@ -46,7 +52,8 @@ export default function Menu() {
   useEffect(() => {
     handleMonthName();
     checkingPresentMonth();
-  });
+    expensiveFilter();
+  }, [selectFilter]);
 
   const handleMonthName = () => {
     switch (month) {
@@ -99,6 +106,16 @@ export default function Menu() {
     }
   };
 
+  const expensiveFilter = () => {
+    Expensives.filter((mes, index) => {
+      return mes.installment.includes("Janeiro");
+    });
+  };
+
+  const getSelectValue = (e) => {
+    setSelectFilter(e.target.value);
+  };
+
   for (let i = 0; i < installment; i++) {
     repeat++;
     if (i === 0) {
@@ -124,21 +141,44 @@ export default function Menu() {
       installment +
       " valor da parcela R$ " +
       payment;
-    console.log(dataView);
+    // console.log(dataView);
   }
 
   return (
-    <span className="addButton">
-      <button>
-        Lançar Despesa <img src={Add} />
-      </button>
-      <select value="">
-        {Expensives.map((desp, index) => {
-          for (let i = 0; i < desp.installment[index]; i++) {
-            return <option key={index} value={stringMonthName}>{stringMonthName}</option>;
-          }
+    <div className="findExpensives">
+      <form className="form">
+        <div className="parent">
+          <div className="parent1">
+            <input
+              className="expensive"
+              value={form.search}
+              name={"search"}
+              placeholder="Busque pela despesa"
+              onChange={onChangeInput}
+            />
+            <button className="clearBtn" onClick={clearInput}>
+              X
+            </button>
+          </div>
+          <button className="searchBtn" onClick={onChangeInput}>
+            Pesquisar
+          </button>
+        </div>
+      </form>
+      <select
+        onChange={getSelectValue}
+        name={"select"}
+        placeholder="Selecione o mês"
+      >
+        <option value={""}>Selecione o mês</option>
+        {allMonths.map((month, index) => {
+          return (
+            <option key={index} value={month}>
+              {month}
+            </option>
+          );
         })}
       </select>
-    </span>
+    </div>
   );
 }

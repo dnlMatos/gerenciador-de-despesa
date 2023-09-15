@@ -1,52 +1,52 @@
 [
   {
     "name": "celular",
-    "installment": 12,
+    "installment": ["Setembro", "Outubro", "Novembro"],
     "payment": 300.00
   },
   {
     "name": "jantar",
-    "installment": 2,
+    "installment": ["Outubro", "Novembro"],
     "payment": 200.00
   },
   {
     "name": "roupas",
-    "installment": 5,
+    "installment": ["Setembro", "Outubro", "Novembro", "Dezembro", "Janeiro"],
     "payment": 300.00
   },
   {
     "name": "combustivel",
-    "installment": 1,
+    "installment": ["Outubro"],
     "payment": 80.00
   },
   {
     "name": "pizza",
-    "installment": 2,
+    "installment": ["Outubro", "Novembro"],
     "payment": 70.00
   },
   {
     "name": "remedio",
-    "installment": 3,
+    "installment": ["Outubro", "Novembro", "Dezembro"],
     "payment": 80.00
   },
   {
     "name": "feira",
-    "installment": 1,
+    "installment": ["Outubro"],
     "payment": 1100.00
   },
   {
     "name": "monitor",
-    "installment": 8,
+    "installment": ["Setembro", "Outubro", "Novembro", "Dezembro", "Janeiro", "Fevereiro", "Março", "Abril"],
     "payment": 300.00
   },
   {
     "name": "tenis",
-    "installment": 4,
+    "installment": ["Setembro", "Outubro", "Novembro", "Dezembro"],
     "payment": 80.00
   },
   {
     "name": "curso",
-    "installment": 7,
+    "installment": ["Setembro", "Outubro", "Novembro", "Dezembro", "Janeiro", "Fevereiro", "Março"],
     "payment": 50.00
   }
 ]
