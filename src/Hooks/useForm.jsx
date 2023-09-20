@@ -9,7 +9,8 @@ export const useForm = (initialState) => {
     setForm({ ...form, [name]: value });
   };
 
-  const clearInput = () => {
+  const clearInput = (e) => {
+    e.preventDefault()
     setForm(initialState);
   };
 

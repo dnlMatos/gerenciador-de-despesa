@@ -1,5 +1,6 @@
+
 * {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .findExpensives {
@@ -29,13 +30,14 @@
 
 .parent1 > .clearBtn {
   padding: 0 5px;
-  border-color: transparent;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   color: purple;
 }
 
 .parent > .searchBtn {
+  padding: 5px;
   cursor: pointer;
   border: none;
   margin-left: 10px;
@@ -54,6 +56,9 @@ select {
   border: 2px solid purple;
   border-radius: 5px;
   padding: 0 5px;
+  background-color: white !important;
 }
 
-
+.sectionExpansives{
+  margin-top: 40px;
+}

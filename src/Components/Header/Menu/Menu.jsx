@@ -4,6 +4,7 @@ import Expensives from "../../../Data/Expensives.json";
 import "./index.css";
 import { useEffect } from "react";
 import { useForm } from "../../../Hooks/useForm";
+import Table from "../../Table/table";
 
 export default function Menu() {
   let dataView = "";
@@ -141,44 +142,48 @@ export default function Menu() {
       installment +
       " valor da parcela R$ " +
       payment;
-    // console.log(dataView);
   }
 
   return (
-    <div className="findExpensives">
-      <form className="form">
-        <div className="parent">
-          <div className="parent1">
-            <input
-              className="expensive"
-              value={form.search}
-              name={"search"}
-              placeholder="Busque pela despesa"
-              onChange={onChangeInput}
-            />
-            <button className="clearBtn" onClick={clearInput}>
-              X
+    <>
+      <div className="findExpensives">
+        <form className="form">
+          <div className="parent">
+            <div className="parent1">
+              <input
+                className="expensive"
+                value={form.search}
+                name={"search"}
+                placeholder="Busque pela despesa"
+                onChange={onChangeInput}
+              />
+              <button className="clearBtn" onClick={clearInput}>
+                X
+              </button>
+            </div>
+            <button className="searchBtn" onClick={onChangeInput}>
+              Pesquisar
             </button>
           </div>
-          <button className="searchBtn" onClick={onChangeInput}>
-            Pesquisar
-          </button>
-        </div>
-      </form>
-      <select
-        onChange={getSelectValue}
-        name={"select"}
-        placeholder="Selecione o mês"
-      >
-        <option value={""}>Selecione o mês</option>
-        {allMonths.map((month, index) => {
-          return (
-            <option key={index} value={month}>
-              {month}
-            </option>
-          );
-        })}
-      </select>
-    </div>
+        </form>
+        <select
+          onChange={getSelectValue}
+          name={"select"}
+          placeholder="Selecione o mês"
+        >
+          <option value={""}>Filtre pelo mês</option>
+          {allMonths.map((month, index) => {
+            return (
+              <option key={index} value={month}>
+                {month}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <section className="sectionExpansives">
+        <Table expensives={Expensives} monthSelected={selectFilter}/>
+      </section>
+    </>
   );
 }
