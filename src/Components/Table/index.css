@@ -22,3 +22,9 @@ table {
     padding: 10px 5px;
     text-align: center;
   }
+
+  .totalValue{
+    margin-top: 30px;
+    margin-right: 150px;
+    text-align: end;
+  }
