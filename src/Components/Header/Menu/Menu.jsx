@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Add from "../../../images/pre-pago.png";
 import Expensives from "../../../Data/Expensives.json";
 import "./index.css";
 import { useEffect } from "react";
@@ -53,8 +52,7 @@ export default function Menu() {
   useEffect(() => {
     handleMonthName();
     checkingPresentMonth();
-    expensiveFilter();
-  }, [selectFilter]);
+  }, [selectFilter, form.search]);
 
   const handleMonthName = () => {
     switch (month) {
@@ -101,16 +99,10 @@ export default function Menu() {
 
   const checkingPresentMonth = () => {
     {
-      newFormatDay <= 5
+      newFormatDay <= 1
         ? setMonth(newFormatMonth)
         : setMonth(newFormatMonth + 1);
     }
-  };
-
-  const expensiveFilter = () => {
-    Expensives.filter((mes, index) => {
-      return mes.installment.includes("Janeiro");
-    });
   };
 
   const getSelectValue = (e) => {
@@ -182,7 +174,7 @@ export default function Menu() {
         </select>
       </div>
       <section className="sectionExpansives">
-        <Table expensives={Expensives} monthSelected={selectFilter}/>
+        <Table expensives={Expensives} monthSelected={selectFilter} form={form.search}/>
       </section>
     </>
   );

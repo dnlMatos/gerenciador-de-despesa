@@ -18,6 +18,11 @@ img {
 }
 
 .user > .exit{
-    cursor: pointer;
     margin-left: 15px;
+}
+
+@media screen and (max-width: 320px) {
+ .userImg, .name{
+  display: none;
+ }   
 }
