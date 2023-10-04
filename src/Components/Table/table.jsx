@@ -3,9 +3,10 @@ import "./index.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function Table({ expensives, monthSelected }) {
+function Table({ expensives, monthSelected, form }) {
   const [payments, setPayments] = useState([]);
   const [statusMonth, setStatusMonth] = useState(true);
+  const [t, setT] = useState({});
 
   const monthsFilter = () => {
     const expensive = expensives.filter((exp) => {
@@ -13,6 +14,18 @@ function Table({ expensives, monthSelected }) {
     });
     setPayments(expensive);
   };
+
+  const checkInputValue = (form) => {
+    const t =
+      form !== ""
+        ? expensives.filter((exp) => {
+            return exp.name.includes(form);
+          })
+        : "";
+    setT(t);
+  };
+  console.log(t);
+  console.log(t.payment);
 
   const sumValuePayments = payments.reduce((accumulator, object) => {
     return accumulator + object.payment;
@@ -23,17 +36,16 @@ function Table({ expensives, monthSelected }) {
   }, 0);
 
   const checkStatusMonth = () => {
-    monthSelected === "" || undefined
+    monthSelected === "" || monthSelected === undefined
       ? setStatusMonth(false)
       : setStatusMonth(true);
   };
 
-  console.log(statusMonth);
-
   useEffect(() => {
+    checkInputValue(form);
     monthsFilter();
     checkStatusMonth();
-  }, [monthSelected]);
+  }, [monthSelected, form]);
 
   return (
     <>
@@ -42,35 +54,55 @@ function Table({ expensives, monthSelected }) {
           <tr>
             <th>DESPESA</th>
             <th>QTDE DE PARCELAS</th>
-            <th>VALOR R$</th>
+            <th>VALOR DA PARCELA R$</th>
           </tr>
         </thead>
         <tbody>
-          {statusMonth
-            ? payments.map((exp, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{exp.name}</td>
-                    <td>{exp.installment.length}</td>
-                    <td>{exp.payment},00</td>
-                  </tr>
-                );
-              })
-            : expensives.map((exp, index) => {
-                return (
-                  <>
+          {form === ""
+            ? statusMonth
+              ? payments.map((exp, index) => {
+                  return (
                     <tr key={index}>
                       <td>{exp.name}</td>
                       <td>{exp.installment.length}</td>
                       <td>{exp.payment},00</td>
                     </tr>
-                  </>
-                );
-              })}
+                  );
+                })
+              : expensives.map((exp, index) => {
+                  return (
+                    <>
+                      <tr key={index}>
+                        <td>{exp.name}</td>
+                        <td>{exp.installment.length}</td>
+                        <td>{exp.payment},00</td>
+                      </tr>
+                    </>
+                  );
+                })
+            : expensives
+                .filter((exp) => {
+                  return exp.name.includes(form);
+                })
+                .map((a, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{a.name}</td>
+                      <td>{a.installment.length}</td>
+                      <td>{a.payment},00</td>
+                    </tr>
+                  );
+                })}
         </tbody>
       </table>
       <h3 className="totalValue">
-        TOTAL R$: {statusMonth ? sumValuePayments : sumValueExpensives},00
+        TOTAL R$:{" "}
+        {form === ""
+          ? statusMonth
+            ? sumValuePayments
+            : sumValueExpensives
+          : sumValuePayments}
+        ,00
       </h3>
     </>
   );

@@ -3,6 +3,7 @@ table {
   }
   
   table thead th{
+    width: 333px;
     padding: 10px 5px;
   }
   
@@ -28,3 +29,24 @@ table {
     margin-right: 150px;
     text-align: end;
   }
+
+  @media screen and (min-width: 320px) {
+    .totalValue{
+      margin-right: 0;
+    }
+   }
+  @media screen and (min-width: 481px) {
+    .totalValue{
+      margin-right: 24px;
+    }
+   }
+  @media screen and (min-width: 1021px ) {
+    .totalValue{
+      margin-right: 74px;
+    }
+   }
+  @media screen and (min-width: 1201px  ) {
+    .totalValue{
+      margin-right: 102px;
+    }
+   }
