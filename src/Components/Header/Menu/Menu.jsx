@@ -4,6 +4,10 @@ import "./index.css";
 import { useEffect } from "react";
 import { useForm } from "../../../Hooks/useForm";
 import Table from "../../Table/table";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Modal from "../Modal/Modal";
 
 export default function Menu() {
   let dataView = "";
@@ -12,7 +16,7 @@ export default function Menu() {
   let yeaSingle = "";
   let repeat = 0;
 
-  const expensives = Expensives;
+  const [modalShow, setModalShow] = React.useState(false);
   const [installment, setInstallment] = useState(5);
   const [payment, setPayment] = useState(200);
   const [month, setMonth] = useState();
@@ -137,45 +141,59 @@ export default function Menu() {
   }
 
   return (
-    <>
-      <div className="findExpensives">
-        <form className="form">
-          <div className="parent">
-            <div className="parent1">
-              <input
-                className="expensive"
-                value={form.search}
-                name={"search"}
-                placeholder="Busque pela despesa"
-                onChange={onChangeInput}
-              />
-              <button className="clearBtn" onClick={clearInput}>
-                X
-              </button>
-            </div>
-            <button className="searchBtn" onClick={onChangeInput}>
-              Pesquisar
+    <Container>
+      <Row>
+        <div className="findExpensives">
+          <Col sm="12" md="9">
+            <form className="form">
+              <div className="parent">
+                <div className="parent1">
+                  <input
+                    className="expensive"
+                    value={form.search}
+                    name={"search"}
+                    placeholder="Busque pela despesa"
+                    onChange={onChangeInput}
+                  />
+                  <button className="clearBtn" onClick={clearInput}>
+                    X
+                  </button>
+                </div>
+                <button className="searchBtn" onClick={onChangeInput}>
+                  Pesquisar
+                </button>
+                <select
+                  onChange={getSelectValue}
+                  name={"select"}
+                  placeholder="Selecione o mês"
+                >
+                  <option value={""}>Filtre pelo mês</option>
+                  {allMonths.map((month, index) => {
+                    return (
+                      <option key={index} value={month}>
+                        {month}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </form>
+          </Col>
+          <Col sm="12" md="3" className="addButton">
+            <button className="btnAdd" onClick={() => setModalShow(true)}>
+              Adicionar despesa
             </button>
-          </div>
-        </form>
-        <select
-          onChange={getSelectValue}
-          name={"select"}
-          placeholder="Selecione o mês"
-        >
-          <option value={""}>Filtre pelo mês</option>
-          {allMonths.map((month, index) => {
-            return (
-              <option key={index} value={month}>
-                {month}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+            <Modal show={modalShow} onHide={() => setModalShow(false)} />
+          </Col>
+        </div>
+      </Row>
       <section className="sectionExpansives">
-        <Table expensives={Expensives} monthSelected={selectFilter} form={form.search}/>
+        <Table
+          expensives={Expensives}
+          monthSelected={selectFilter}
+          form={form.search}
+        />
       </section>
-    </>
+    </Container>
   );
 }
