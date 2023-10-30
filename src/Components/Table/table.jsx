@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import Tablee from 'react-bootstrap/Table';
 
 function Table({ expensives, monthSelected, form }) {
   const [payments, setPayments] = useState([]);
@@ -49,7 +50,7 @@ function Table({ expensives, monthSelected, form }) {
 
   return (
     <>
-      <table>
+      <Tablee>
         <thead>
           <tr>
             <th>DESPESA</th>
@@ -94,7 +95,7 @@ function Table({ expensives, monthSelected, form }) {
                   );
                 })}
         </tbody>
-      </table>
+      </Tablee>
       <h3 className="totalValue">
         TOTAL R$:{" "}
         {form === ""

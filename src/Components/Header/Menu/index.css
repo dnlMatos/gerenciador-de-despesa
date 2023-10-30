@@ -1,23 +1,22 @@
-
 * {
   font-family: 'Nunito', sans-serif;
 }
 
 .findExpensives {
-  margin-top: 40px;
+  margin-top: 40px!important;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .parent {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .parent > .parent1 {
   border-radius: 5px;
   border: 2px solid purple;
-  padding: 5px;
+  padding: 0 5px;
 }
 
 .parent > .parent1 > input {
@@ -40,7 +39,6 @@
   padding: 5px;
   cursor: pointer;
   border: none;
-  margin-left: 10px;
   border-radius: 5px;
   color: white;
   background-color: purple;
@@ -52,6 +50,7 @@
 }
 
 select {
+  margin-left: 30px!important;
   color: purple;
   border: 2px solid purple;
   border-radius: 5px;
@@ -63,14 +62,41 @@ select {
   margin-top: 40px;
 }
 
-@media screen and (max-width: 320px) {
-  .findExpensives {
+.addButton{
+  display: flex;
+  justify-content: end;
+}
+
+.btnAdd{
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #44A4EC;
+}
+
+.btnAdd:hover{
+  background-color: #3c8ecc;
+  transition: all 0.2s;
+}
+
+@media (max-width: 767px) {
+  .findExpensives{
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 15px;
   }
+
   select {
+    margin-left: 96px!important;
+  }
+
+  .addButton{
+    margin-top: 15px;
+    display: block;
+  }
+
+  .btnAdd{
     width: 100%;
-    height: 34px;
   }
 }

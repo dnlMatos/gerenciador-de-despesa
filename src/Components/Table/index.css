@@ -1,52 +1,53 @@
-table {
-    width: 100%;
-  }
-  
-  table thead th{
-    width: 333px;
-    padding: 10px 5px;
-  }
-  
-  table tbody tr {
-    border-bottom: 1px solid #ddd;
-    font-family: 'calibri', sans-serif;
-    font-size: 1.1rem;
-  }
-  
-  table tbody tr:hover {
-    color: white;
-    background-color: rgba(128, 0, 128, 0.815);
-    transition: all .5s;
-  }
-  
-  table tbody td {
-    padding: 10px 5px;
-    text-align: center;
-  }
+thead {
+  color: coral !important;
+  text-align: center;
+}
 
-  .totalValue{
-    margin-top: 30px;
-    margin-right: 150px;
-    text-align: end;
-  }
+table > thead > tr > th {
+  width: 150px;
+  font-weight: bold;
+}
 
-  @media screen and (min-width: 320px) {
-    .totalValue{
-      margin-right: 0;
-    }
-   }
-  @media screen and (min-width: 481px) {
-    .totalValue{
-      margin-right: 24px;
-    }
-   }
-  @media screen and (min-width: 1021px ) {
-    .totalValue{
-      margin-right: 74px;
-    }
-   }
-  @media screen and (min-width: 1201px  ) {
-    .totalValue{
-      margin-right: 102px;
-    }
-   }
+table tbody tr {
+  border-bottom: 1px solid #ddd;
+  font-family: "calibri", sans-serif;
+  font-size: 1.1rem;
+}
+
+table tbody tr:hover {
+  color: white;
+  background-color: rgba(128, 0, 128, 0.815);
+  transition: all 0.5s;
+}
+
+table tbody td {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.totalValue {
+  margin-top: 30px;
+  margin-right: 150px;
+  text-align: end;
+}
+
+@media screen and (min-width: 320px) {
+  .totalValue {
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 481px) {
+  .totalValue {
+    margin-right: 24px;
+  }
+}
+@media screen and (min-width: 1021px) {
+  .totalValue {
+    margin-right: 74px;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .totalValue {
+    margin-right: 102px;
+  }
+}
